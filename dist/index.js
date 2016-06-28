@@ -7,7 +7,7 @@ exports.schema = undefined;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
-exports.createValidatingReducer = createValidatingReducer;
+exports.createSanitizingReducer = createSanitizingReducer;
 
 var _schema = require('./schema');
 
@@ -25,15 +25,15 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 var schema = exports.schema = Schema;
 
-createValidatingReducer.trackChanges = false;
-function createValidatingReducer(rootSchema) {
+createSanitizingReducer.trackChanges = false;
+function createSanitizingReducer(rootSchema) {
   var previousState = {};
 
   // schema matcher
   function checkAgainstSchema(state, previousState, schema, path) {
     // if unchanged, return state transparently
     if (previousState && state === previousState) {
-      if (createValidatingReducer.trackChanges) {
+      if (createSanitizingReducer.trackChanges) {
         console.log('[' + path + '] Returning state as is since equality check passes');
       }
       return state;
@@ -90,7 +90,7 @@ function createValidatingReducer(rootSchema) {
           var type = schema.type;
           var defaultValue = schema.default;
           var newState = type(state || defaultValue);
-          if (createValidatingReducer.trackChanges) {
+          if (createSanitizingReducer.trackChanges) {
             console.log('[' + path + '] Setting leaf value', 'type=' + type.name, 'changes: ' + state + ' => ' + newState);
           }
           return newState;
