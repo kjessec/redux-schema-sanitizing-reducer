@@ -25,7 +25,7 @@ function createSanitizingReducer(rootSchema) {
   // schema matcher
   function checkAgainstSchema(state, previousState, schema, path) {
     // if unchanged, return state transparently
-    if (typeof previousState !== 'undefined' && state === previousState) {
+    if (typeof previousState !== 'undefined' && previousState !== null && state === previousState) {
       if (createSanitizingReducer.trackChanges) {
         console.log('[' + path + '] Returning state as is since equality check passes');
       }
@@ -98,7 +98,8 @@ function createSanitizingReducer(rootSchema) {
       else {
           var type = schema.type;
           var defaultValue = schema.default;
-          var newState = type(state || defaultValue || type());
+          var newState = type === String ? type(state === '' ? '' : state || defaultValue || type()) : type(state || defaultValue || type());
+
           if (createSanitizingReducer.trackChanges) {
             console.log('[' + path + '] Sanitizing leaf value', 'type=' + type.name, 'applied: ' + state + ' => ' + newState);
           }

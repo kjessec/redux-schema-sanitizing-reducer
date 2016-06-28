@@ -78,7 +78,10 @@ export function createSanitizingReducer(rootSchema) {
     else {
       const type = schema.type;
       const defaultValue = schema.default;
-      const newState = type(state || defaultValue || type());
+      const newState = type === String
+        ? type(state === '' ? '' : state || defaultValue || type())
+        : type(state || defaultValue || type());
+
       if(createSanitizingReducer.trackChanges) {
         console.log(
           `[${path}] Sanitizing leaf value`,
