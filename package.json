@@ -1,0 +1,38 @@
+{
+  "name": "redux-schema-sanitizing-reducer",
+  "version": "0.1.0",
+  "description": "sanitizing reducer based on a schema definition",
+  "main": "dist/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "tape": "^4.6.0",
+    "babel-cli": "^6.10.1",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "babel-preset-es2015": "^6.9.0"
+  },
+  "scripts": {
+    "test": "babel-node test",
+    "build": "babel src --out-dir dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kjessec/redux-schema-sanitizing-reducer.git"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "sanitization",
+    "validation",
+    "reducer",
+    "immutable",
+    "immutability"
+  ],
+  "author": "Jesse Chung <jesse@soob.co>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kjessec/redux-schema-sanitizing-reducer/issues"
+  },
+  "homepage": "https://github.com/kjessec/redux-schema-sanitizing-reducer#readme"
+}
