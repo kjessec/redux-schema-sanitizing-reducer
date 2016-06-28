@@ -13,19 +13,12 @@ var _schema = require('./schema');
 
 var Schema = _interopRequireWildcard(_schema);
 
-var _omnimap = require('omnimap');
-
-var _omnimap2 = _interopRequireDefault(_omnimap);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 var schema = exports.schema = Schema;
 
-createSanitizingReducer.trackChanges = false;
 function createSanitizingReducer(rootSchema) {
   var previousState = {};
 
@@ -43,6 +36,13 @@ function createSanitizingReducer(rootSchema) {
     // 1. object sanitizing
     if (schema.type === Object) {
       var _ret2 = function () {
+        // if 'allow-all' schema, return state as is
+        if (typeof schema.values === 'undefined') return {
+            v: state
+          };
+
+        // apply schema to children
+        state = state || {};
         previousState = previousState || {};
         var dirtyState = {};
 
@@ -79,6 +79,11 @@ function createSanitizingReducer(rootSchema) {
 
     // 2. array sanitizing
     else if (schema.type === Array) {
+        // if 'allow-all' schema, return state as is
+        if (typeof schema.values === 'undefined') return state;
+
+        // apply schema to children
+        state = state || [];
         previousState = previousState || [];
         return state.map(function (child, childIdx) {
           return checkAgainstSchema(child, previousState[childIdx], schema.values, path + '.' + childIdx);
@@ -103,3 +108,5 @@ function createSanitizingReducer(rootSchema) {
     return _ret;
   };
 }
+
+createSanitizingReducer.trackChanges = false;

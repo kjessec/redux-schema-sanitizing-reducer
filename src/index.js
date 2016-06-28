@@ -1,9 +1,7 @@
 'use strict';
 import * as Schema from './schema';
-import omnimap from 'omnimap';
 export const schema = Schema;
 
-createSanitizingReducer.trackChanges = false;
 export function createSanitizingReducer(rootSchema) {
   let previousState = {};
 
@@ -20,6 +18,11 @@ export function createSanitizingReducer(rootSchema) {
     // if changed, do something..
     // 1. object sanitizing
     if(schema.type === Object) {
+      // if 'allow-all' schema, return state as is
+      if(typeof schema.values === 'undefined') return state;
+
+      // apply schema to children
+      state = state || {};
       previousState = previousState || {};
       const dirtyState = {};
 
@@ -53,6 +56,11 @@ export function createSanitizingReducer(rootSchema) {
 
     // 2. array sanitizing
     else if(schema.type === Array) {
+      // if 'allow-all' schema, return state as is
+      if(typeof schema.values === 'undefined') return state;
+
+      // apply schema to children
+      state = state || [];
       previousState = previousState || [];
       return state.map(function(child, childIdx) {
         return checkAgainstSchema(child, previousState[childIdx], schema.values, `${path}.${childIdx}`);
@@ -80,3 +88,5 @@ export function createSanitizingReducer(rootSchema) {
     return _ret;
   };
 }
+
+createSanitizingReducer.trackChanges = false;
