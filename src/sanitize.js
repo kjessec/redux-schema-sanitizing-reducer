@@ -48,7 +48,9 @@ export default function sanitize(state, previousState, schema, path) {
       const schemaLeaf = schema.values[key];
 
       if(typeof schemaLeaf === 'undefined') {
-        console.log(`[${path}.${key}] This path is not registered in Schema. using state as is...`);
+        if(createSanitizingReducer.trackChanges) {
+          console.log(`[${path}.${key}] This path is not registered in Schema. using state as is...`);
+        }
         dirtyState[key] = targetLeaf;
       } else {
         dirtyState[key] = sanitize(
