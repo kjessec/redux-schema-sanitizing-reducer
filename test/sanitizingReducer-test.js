@@ -1,6 +1,6 @@
 'use strict';
 import { createSanitizingReducer } from '../src';
-import { object, string, number, array } from '../src/schema';
+import { object, string, number, array, ref } from '../src/schema';
 import test from 'tape';
 
 createSanitizingReducer.trackChanges = true;
