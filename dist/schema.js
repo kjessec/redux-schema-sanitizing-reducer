@@ -7,33 +7,53 @@ exports.object = object;
 exports.array = array;
 exports.string = string;
 exports.number = number;
+exports.boolean = boolean;
+exports.ref = ref;
+function schemaFactory(schema) {
+  return schema; // TBD
+}
+
 function object(values) {
   var strict = arguments.length <= 1 || arguments[1] === undefined ? false : arguments[1];
 
-  return {
+  return schemaFactory({
     type: Object,
     values: values,
     strict: strict
-  };
+  });
 };
 
 function array(values) {
-  return {
+  return schemaFactory({
     type: Array,
     values: values
-  };
+  });
 };
 
 function string(defaultValue) {
-  return {
+  return schemaFactory({
     type: String,
     'default': defaultValue
-  };
+  });
 };
 
 function number(defaultValue) {
-  return {
+  return schemaFactory({
     type: Number,
     'default': defaultValue
-  };
+  });
 };
+
+function boolean(defaultValue) {
+  return schemaFactory({
+    type: Boolean,
+    'default': defaultValue
+  });
+};
+
+function ref(refId) {
+  return schemaFactory({
+    type: '__ref',
+    ref: refId
+  });
+}
