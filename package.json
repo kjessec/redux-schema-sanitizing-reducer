@@ -25,10 +25,13 @@
     "react",
     "redux",
     "sanitization",
+    "sanitize",
     "validation",
     "reducer",
     "immutable",
-    "immutability"
+    "immutability",
+    "persistent",
+    "store"
   ],
   "author": "Jesse Chung <jesse@soob.co>",
   "license": "MIT",
