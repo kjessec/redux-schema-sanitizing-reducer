@@ -1,6 +1,6 @@
 {
   "name": "redux-schema-sanitizing-reducer",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "sanitizing reducer based on a schema definition",
   "main": "dist/index.js",
   "directories": {
