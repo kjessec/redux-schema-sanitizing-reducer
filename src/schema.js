@@ -38,10 +38,3 @@ export function boolean(defaultValue) {
     'default': defaultValue
   })
 };
-
-export function ref(refId) {
-  return schemaFactory({
-    type: '__ref',
-    ref: refId
-  });
-}

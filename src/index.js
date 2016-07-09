@@ -7,7 +7,7 @@ export const schema = Schema;
 export function createSanitizingReducer(rootSchema) {
   let previousState = {};
 
-  return function validatingReducer(state) {
+  return function sanitizingReducer(state) {
     // future-proof compose functionality
     const _ret = stateCompose(
       sanitize
