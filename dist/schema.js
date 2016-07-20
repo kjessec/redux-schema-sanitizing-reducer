@@ -8,7 +8,6 @@ exports.array = array;
 exports.string = string;
 exports.number = number;
 exports.boolean = boolean;
-exports.ref = ref;
 function schemaFactory(schema) {
   return schema; // TBD
 }
@@ -21,39 +20,32 @@ function object(values) {
     values: values,
     strict: strict
   });
-};
+}
 
 function array(values) {
   return schemaFactory({
     type: Array,
     values: values
   });
-};
+}
 
 function string(defaultValue) {
   return schemaFactory({
     type: String,
-    'default': defaultValue
+    default: defaultValue
   });
-};
+}
 
 function number(defaultValue) {
   return schemaFactory({
     type: Number,
-    'default': defaultValue
+    default: defaultValue
   });
-};
+}
 
 function boolean(defaultValue) {
   return schemaFactory({
     type: Boolean,
-    'default': defaultValue
-  });
-};
-
-function ref(refId) {
-  return schemaFactory({
-    type: '__ref',
-    ref: refId
+    default: defaultValue
   });
 }

@@ -24,7 +24,7 @@ var schema = exports.schema = Schema;
 function createSanitizingReducer(rootSchema) {
   var previousState = {};
 
-  return function validatingReducer(state) {
+  return function sanitizingReducer(state) {
     // future-proof compose functionality
     var _ret = (0, _util.stateCompose)(_sanitize2.default)(state, previousState, rootSchema, '__root');
 

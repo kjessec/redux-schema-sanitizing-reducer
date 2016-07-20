@@ -8,23 +8,16 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 exports.default = sanitize;
 
-var _ = require('./');
-
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 function sanitize(state, previousState, schema, path) {
   // if unchanged, return state transparently
   if (typeof previousState !== 'undefined' && previousState !== null && state === previousState) {
-    if (_.createSanitizingReducer.trackChanges) {
-      console.log('[' + path + '] Returning state as is since equality check passes');
-    }
-
     return state;
   }
 
-  // ...
-  if (_.createSanitizingReducer.trackChanges) {
-    console.log('[' + path + '] Sanitizing since equality check fails');
+  if (typeof schema === 'function') {
+    schema = schema(state);
   }
 
   // if changed, do something..
@@ -57,9 +50,6 @@ function sanitize(state, previousState, schema, path) {
         var schemaLeaf = schema.values[key];
 
         if (typeof schemaLeaf === 'undefined') {
-          if (_.createSanitizingReducer.trackChanges) {
-            console.log('[' + path + '.' + key + '] This path is not registered in Schema. using state as is...');
-          }
           dirtyState[key] = targetLeaf;
         } else {
           dirtyState[key] = sanitize(targetLeaf, previousLeaf, schemaLeaf, path + '.' + key);
@@ -87,16 +77,10 @@ function sanitize(state, previousState, schema, path) {
       });
     }
 
-    // 3. leaf defaulting
-    else {
-        var type = schema.type;
-        var defaultValue = schema.default;
-        var newState = type === String ? type(state === '' ? '' : state || defaultValue || type()) : type(state || defaultValue || type());
+  // 3. leaf defaulting
+  var type = schema.type;
+  var defaultValue = schema.default;
+  var newState = type === String ? type(state === '' ? '' : state || defaultValue || type()) : type(state || defaultValue || type());
 
-        if (_.createSanitizingReducer.trackChanges) {
-          console.log('[' + path + '] Sanitizing leaf value', 'type=' + type.name, 'applied: ' + state + ' => ' + newState);
-        }
-
-        return newState;
-      }
+  return newState;
 }
