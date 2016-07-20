@@ -7,34 +7,34 @@ export function object(values, strict = false) {
   return schemaFactory({
     type: Object,
     values,
-    strict
+    strict,
   });
-};
+}
 
 export function array(values) {
   return schemaFactory({
     type: Array,
     values,
   });
-};
+}
 
 export function string(defaultValue) {
   return schemaFactory({
     type: String,
-    'default': defaultValue
+    default: defaultValue,
   });
-};
+}
 
 export function number(defaultValue) {
   return schemaFactory({
     type: Number,
-    'default': defaultValue
+    default: defaultValue,
   });
-};
+}
 
 export function boolean(defaultValue) {
   return schemaFactory({
     type: Boolean,
-    'default': defaultValue
-  })
-};
+    default: defaultValue,
+  });
+}

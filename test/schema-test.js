@@ -2,8 +2,7 @@
 import { object, array, string, number } from '../src/schema';
 import test from 'tape';
 
-test('schema', function(t) {
-
+test('schema', t => {
   const rootSchema = object({
     str1: string(),
     str2: string('hello world'),
@@ -11,13 +10,13 @@ test('schema', function(t) {
     num2: number(2),
     obj1: object({
       obj11: string(),
-      num11: number()
+      num11: number(),
     }),
     arr1: array({
       obj: object({
-        str: string('5555')
-      })
-    })
+        str: string('5555'),
+      }),
+    }),
   });
 
   t.ok(rootSchema.type === Object);

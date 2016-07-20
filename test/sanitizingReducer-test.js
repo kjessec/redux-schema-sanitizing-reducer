@@ -1,22 +1,22 @@
+/* eslint max-len: 0 */
 'use strict';
 import { createSanitizingReducer } from '../src';
-import { object, string, number, array, ref } from '../src/schema';
+import { object, string, number, array } from '../src/schema';
 import test from 'tape';
 
-createSanitizingReducer.trackChanges = true;
-
-test('sanitizing reducer', function(t) {
+test('sanitizing reducer', t => {
   const schema = object({
     aStringValue: string('a value'),
     anObjectValue: object({
       nest1: string(''),
-      nest2: number(12344)
+      nest2: number(12344),
     }),
     anArrayValue: array(object({
       nest11: string('asdf'),
       nest12: number(145),
-      nest13: string('hello world')
-    }))
+      nest13: string('hello world'),
+    })),
+    pragmaticTest: (value = {}) => (value.type === 1) ? string('hello!') : number(-1),
   });
 
   const reducer = createSanitizingReducer(schema);
@@ -25,21 +25,21 @@ test('sanitizing reducer', function(t) {
     anObjectValue: {
       nest1: undefined,
       nest2: undefined,
-      nest3: 'whatever~~~~~~~'
+      nest3: 'whatever~~~~~~~',
     },
     anUnchangingObjectValue: {
-      val: 'foo'
+      val: 'foo',
     },
     anArrayValue: [
       {
         nest11: 'aaaa',
-        nest12: 333
+        nest12: 333,
       },
       {
         nest11: 'ffff',
-        nest12: 345345
-      }
-    ]
+        nest12: 345345,
+      },
+    ],
   };
 
   const newState = reducer(state);
@@ -53,8 +53,8 @@ test('sanitizing reducer', function(t) {
     ...newState,
     anArrayValue: [
       ...newState.anArrayValue,
-      { /* empty object */ }
-    ]
+      { /* empty object */ },
+    ],
   };
 
   const newNewState = reducer(newImmutableState);

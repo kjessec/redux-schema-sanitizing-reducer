@@ -8,5 +8,12 @@
       "spread": true,
       "experimentalObjectRestSpread": true
     }
+  },
+  "rules": {
+    "strict": 0,
+    "no-param-reassign": 0,
+    "keyword-spacing": 0,
+    "brace-style": 0,
+    "no-confusing-arrow": 0
   }
 }

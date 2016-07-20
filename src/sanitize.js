@@ -1,22 +1,15 @@
 'use strict';
-import { createSanitizingReducer } from './';
-
 export default function sanitize(state, previousState, schema, path) {
   // if unchanged, return state transparently
   if(
     typeof previousState !== 'undefined' &&
     previousState !== null &&
     state === previousState) {
-    if(createSanitizingReducer.trackChanges) {
-      console.log(`[${path}] Returning state as is since equality check passes`);
-    }
-
     return state;
   }
 
-  // ...
-  if(createSanitizingReducer.trackChanges) {
-    console.log(`[${path}] Sanitizing since equality check fails`);
+  if(typeof schema === 'function') {
+    schema = schema(state);
   }
 
   // if changed, do something..
@@ -48,9 +41,6 @@ export default function sanitize(state, previousState, schema, path) {
       const schemaLeaf = schema.values[key];
 
       if(typeof schemaLeaf === 'undefined') {
-        if(createSanitizingReducer.trackChanges) {
-          console.log(`[${path}.${key}] This path is not registered in Schema. using state as is...`);
-        }
         dirtyState[key] = targetLeaf;
       } else {
         dirtyState[key] = sanitize(
@@ -70,28 +60,17 @@ export default function sanitize(state, previousState, schema, path) {
     // apply schema to children
     state = state || [];
     previousState = previousState || [];
-    return state.map(function(child, childIdx) {
-      return sanitize(
-        child, previousState[childIdx], schema.values, `${path}.${childIdx}`
-      );
-    });
+    return state.map((child, childIdx) => sanitize(
+      child, previousState[childIdx], schema.values, `${path}.${childIdx}`
+    ));
   }
 
   // 3. leaf defaulting
-  else {
-    const type = schema.type;
-    const defaultValue = schema.default;
-    const newState = type === String
-      ? type(state === '' ? '' : state || defaultValue || type())
-      : type(state || defaultValue || type());
+  const type = schema.type;
+  const defaultValue = schema.default;
+  const newState = type === String
+    ? type(state === '' ? '' : state || defaultValue || type())
+    : type(state || defaultValue || type());
 
-    if(createSanitizingReducer.trackChanges) {
-      console.log(
-        `[${path}] Sanitizing leaf value`,
-        `type=${type.name}`,
-        `applied: ${state} => ${newState}`);
-    }
-
-    return newState;
-  }
+  return newState;
 }
