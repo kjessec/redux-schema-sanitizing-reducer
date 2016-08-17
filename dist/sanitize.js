@@ -85,7 +85,7 @@ function sanitize(state, previousState, schema, path) {
     case String:
       return type(state === '' ? '' : state || defaultValue || type());
     case Boolean:
-      return type(!state && state !== false ? defaultValue : value);
+      return type(!state && state !== false ? defaultValue : state);
     default:
       return type(state || defaultValue || type());
   }
