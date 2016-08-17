@@ -19,8 +19,7 @@
   },
   "scripts": {
     "test": "babel-node test",
-    "build": "babel src --out-dir dist",
-    "prepublish": "npm run build"
+    "build": "babel src --out-dir dist"
   },
   "repository": {
     "type": "git",

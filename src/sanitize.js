@@ -68,9 +68,13 @@ export default function sanitize(state, previousState, schema, path) {
   // 3. leaf defaulting
   const type = schema.type;
   const defaultValue = schema.default;
-  const newState = type === String
-    ? type(state === '' ? '' : state || defaultValue || type())
-    : type(state || defaultValue || type());
 
-  return newState;
+  switch(type) {
+    case String:
+      return type(state === '' ? '' : state || defaultValue || type());
+    case Boolean:
+      return type((!state && state !== false) ? defaultValue : state);
+    default:
+      return type(state || defaultValue || type());
+  }
 }

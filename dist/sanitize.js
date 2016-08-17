@@ -80,7 +80,13 @@ function sanitize(state, previousState, schema, path) {
   // 3. leaf defaulting
   var type = schema.type;
   var defaultValue = schema.default;
-  var newState = type === String ? type(state === '' ? '' : state || defaultValue || type()) : type(state || defaultValue || type());
 
-  return newState;
+  switch (type) {
+    case String:
+      return type(state === '' ? '' : state || defaultValue || type());
+    case Boolean:
+      return type(!state && state !== false ? defaultValue : value);
+    default:
+      return type(state || defaultValue || type());
+  }
 }
