@@ -1,4 +1,6 @@
 'use strict';
+const identity = x => x;
+
 function schemaFactory(schema) {
   return schema; // TBD
 }
@@ -18,23 +20,26 @@ export function array(values) {
   });
 }
 
-export function string(defaultValue) {
+export function string(defaultValue, transform = identity) {
   return schemaFactory({
     type: String,
-    default: defaultValue,
+    defaultValue,
+    transform,
   });
 }
 
-export function number(defaultValue) {
+export function number(defaultValue, transform = identity) {
   return schemaFactory({
     type: Number,
-    default: defaultValue,
+    defaultValue,
+    transform,
   });
 }
 
-export function boolean(defaultValue) {
+export function boolean(defaultValue, transform = identity) {
   return schemaFactory({
     type: Boolean,
-    default: defaultValue,
+    defaultValue,
+    transform,
   });
 }

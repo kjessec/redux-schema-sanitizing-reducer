@@ -8,6 +8,7 @@ export default function sanitize(state, previousState, schema, path) {
     return state;
   }
 
+  // dynamic schema sourcing
   if(typeof schema === 'function') {
     schema = schema(state);
   }
@@ -66,15 +67,14 @@ export default function sanitize(state, previousState, schema, path) {
   }
 
   // 3. leaf defaulting
-  const type = schema.type;
-  const defaultValue = schema.default;
+  const { type, transform, defaultValue } = schema;
 
   switch(type) {
     case String:
-      return type(state === '' ? '' : state || defaultValue || type());
+      return transform(type(state === '' ? '' : state || defaultValue || type()));
     case Boolean:
-      return type((!state && state !== false) ? defaultValue : state);
+      return transform(type((!state && state !== false) ? defaultValue : state));
     default:
-      return type(state || defaultValue || type());
+      return transform(type(state || defaultValue || type()));
   }
 }
