@@ -8,6 +8,10 @@ exports.array = array;
 exports.string = string;
 exports.number = number;
 exports.boolean = boolean;
+var identity = function identity(x) {
+  return x;
+};
+
 function schemaFactory(schema) {
   return schema; // TBD
 }
@@ -30,22 +34,31 @@ function array(values) {
 }
 
 function string(defaultValue) {
+  var transform = arguments.length <= 1 || arguments[1] === undefined ? identity : arguments[1];
+
   return schemaFactory({
     type: String,
-    default: defaultValue
+    defaultValue: defaultValue,
+    transform: transform
   });
 }
 
 function number(defaultValue) {
+  var transform = arguments.length <= 1 || arguments[1] === undefined ? identity : arguments[1];
+
   return schemaFactory({
     type: Number,
-    default: defaultValue
+    defaultValue: defaultValue,
+    transform: transform
   });
 }
 
 function boolean(defaultValue) {
+  var transform = arguments.length <= 1 || arguments[1] === undefined ? identity : arguments[1];
+
   return schemaFactory({
     type: Boolean,
-    default: defaultValue
+    defaultValue: defaultValue,
+    transform: transform
   });
 }
