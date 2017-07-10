@@ -10,7 +10,7 @@
     "tape": "^4.6.0"
   },
   "scripts": {
-    "test": "node --harmony test",
+    "test": "node --harmony test"
   },
   "repository": {
     "type": "git",
