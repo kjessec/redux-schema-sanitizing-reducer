@@ -71,10 +71,12 @@ export default function sanitize(state, previousState, schema, path) {
 
   switch(type) {
     case String:
-      return transform(type(state === '' ? '' : state || defaultValue || type()));
+      return transform(type(state === '' ? '' : state || defaultValue));
     case Boolean:
       return transform(type((!state && state !== false) ? defaultValue : state));
+    case Number:
+      return transform(type(Number.isNaN(+state) ? defaultValue : state))
     default:
-      return transform(type(state || defaultValue || type()));
+      return transform(type(state || defaultValue));
   }
 }

@@ -20,7 +20,7 @@ export function array(values) {
   });
 }
 
-export function string(defaultValue, transform = identity) {
+export function string(defaultValue = '', transform = identity) {
   return schemaFactory({
     type: String,
     defaultValue,
@@ -28,7 +28,7 @@ export function string(defaultValue, transform = identity) {
   });
 }
 
-export function number(defaultValue, transform = identity) {
+export function number(defaultValue = 0, transform = identity) {
   return schemaFactory({
     type: Number,
     defaultValue,
@@ -36,7 +36,7 @@ export function number(defaultValue, transform = identity) {
   });
 }
 
-export function boolean(defaultValue, transform = identity) {
+export function boolean(defaultValue = true, transform = identity) {
   return schemaFactory({
     type: Boolean,
     defaultValue,
