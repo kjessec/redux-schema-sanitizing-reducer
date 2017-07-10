@@ -1,5 +1,4 @@
-'use strict';
-export default function sanitize(state, previousState, schema, path) {
+module.exports = function sanitize(state, previousState, schema, path) {
   // if unchanged, return state transparently
   if(
     typeof previousState !== 'undefined' &&

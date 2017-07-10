@@ -1,8 +1,7 @@
 /* eslint max-len: 0 */
-'use strict';
-import { createSanitizingReducer } from '../src';
-import { object, string, number, array } from '../src/schema';
-import test from 'tape';
+const { createSanitizingReducer } = require('../src');
+const { object, string, number, array } = require('../src/schema');
+const test = require('tape');
 
 test('sanitizing reducer', t => {
   const schema = object({
@@ -22,6 +21,7 @@ test('sanitizing reducer', t => {
   const reducer = createSanitizingReducer(schema);
   const state = {
     aStringValue: undefined,
+    aNumberValue: 222,
     anObjectValue: {
       nest1: undefined,
       nest2: undefined,
@@ -44,6 +44,7 @@ test('sanitizing reducer', t => {
 
   const newState = reducer(state);
   t.ok(state !== newState, 'root node immutable');
+  t.ok(state.aNumberValue === 222);
   t.ok(state.anArrayValue[0].nest12 === newState.anArrayValue[0].nest12, 'same values are the same');
   t.ok(state.anObjectValue !== newState.anObjectValue, '');
   t.ok(state.anUnchangingObjectValue === newState.anUnchangingObjectValue);
@@ -51,6 +52,7 @@ test('sanitizing reducer', t => {
   // make immutable changes to newState
   const newImmutableState = {
     ...newState,
+    aNumberValue: 0,
     anArrayValue: [
       ...newState.anArrayValue,
       { /* empty object */ },
@@ -59,6 +61,7 @@ test('sanitizing reducer', t => {
 
   const newNewState = reducer(newImmutableState);
   t.ok(newNewState !== newState, 'root node immutable');
+  t.equal(newNewState.aNumberValue, 0);
   t.ok(newNewState.anArrayValue !== newState.anArrayValue, 'interim nodes immutable');
   t.ok(newNewState.anArrayValue[2] !== newState.anArrayValue[2], 'leaf node created according to the schema');
   t.ok(newNewState.anArrayValue[2].nest11 === 'asdf', 'default value enforced');

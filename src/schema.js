@@ -1,11 +1,10 @@
-'use strict';
 const identity = x => x;
 
 function schemaFactory(schema) {
   return schema; // TBD
 }
 
-export function object(values, strict = false) {
+exports.object = function object(values, strict = false) {
   return schemaFactory({
     type: Object,
     values,
@@ -13,14 +12,14 @@ export function object(values, strict = false) {
   });
 }
 
-export function array(values) {
+exports.array = function array(values) {
   return schemaFactory({
     type: Array,
     values,
   });
 }
 
-export function string(defaultValue = '', transform = identity) {
+exports.string = function string(defaultValue = '', transform = identity) {
   return schemaFactory({
     type: String,
     defaultValue,
@@ -28,7 +27,7 @@ export function string(defaultValue = '', transform = identity) {
   });
 }
 
-export function number(defaultValue = 0, transform = identity) {
+exports.number = function number(defaultValue = 0, transform = identity) {
   return schemaFactory({
     type: Number,
     defaultValue,
@@ -36,7 +35,7 @@ export function number(defaultValue = 0, transform = identity) {
   });
 }
 
-export function boolean(defaultValue = true, transform = identity) {
+exports.boolean = function boolean(defaultValue = true, transform = identity) {
   return schemaFactory({
     type: Boolean,
     defaultValue,

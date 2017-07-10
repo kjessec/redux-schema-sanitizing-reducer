@@ -1,10 +1,9 @@
-'use strict';
-import * as Schema from './schema';
-import { stateCompose } from './util';
-import sanitize from './sanitize';
+const Schema = require('./schema');
+const sanitize = require('./sanitize');
+const { stateCompose } = require('./util');
 
-export const schema = Schema;
-export function createSanitizingReducer(rootSchema) {
+exports.schema = Schema;
+exports.createSanitizingReducer = function createSanitizingReducer(rootSchema) {
   let previousState = {};
 
   return function sanitizingReducer(state) {
@@ -16,6 +15,4 @@ export function createSanitizingReducer(rootSchema) {
     previousState = _ret;
     return _ret;
   };
-}
-
-createSanitizingReducer.trackChanges = false;
+};

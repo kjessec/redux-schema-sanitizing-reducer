@@ -1,6 +1,5 @@
-'use strict';
-import { object, array, string, number } from '../src/schema';
-import test from 'tape';
+const { object, array, string, number } = require('../src/schema');
+const test = require('tape');
 
 test('schema', t => {
   const rootSchema = object({
@@ -21,6 +20,6 @@ test('schema', t => {
 
   t.ok(rootSchema.type === Object);
   t.ok(rootSchema.values.str1.type === String);
-  t.ok(rootSchema.values.num2.default === 2);
+  t.ok(rootSchema.values.num2.defaultValue === 2);
   t.end();
 });

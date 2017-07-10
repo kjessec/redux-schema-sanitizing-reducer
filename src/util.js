@@ -1,5 +1,4 @@
-'use strict';
-export function stateCompose(...funcs) {
+exports.stateCompose = function stateCompose(...funcs) {
   const first = funcs[0];
   const rest = funcs.slice(1);
 
@@ -7,8 +6,8 @@ export function stateCompose(...funcs) {
     f(state, ...args.slice(1)), first(...args));
 }
 
-export function isObject(obj) {
+exports.isObject = function isObject(obj) {
   return obj === Object(obj);
 }
 
-export const isArray = Array.isArray;
+exports.isArray = Array.isArray;
