@@ -1,0 +1,250 @@
+Table 1
+time	eng	Kor
+0:00:02	So this is a presentation about a technical challenges of the blockchain, that was presented yesterday at the Seoul National University, and we’re recording now.
+0:00:14	blockchains are open distributed databases with stored procedures,
+0:00:19	and in that sense they inherit of the properties of open networks like the internet,
+0:00:25	of distributed databases, typical examples are Google search
+0:00:29	and of distributed applications, things like Google Docs.
+0:00:35	An open network is a network in which anyone can set up a node and can link that no two other notes of the system
+0:00:45	 and can provide access to the system and to the services that are in the system.
+0:00:50	internet is a typical example of permission nets for open Networks
+0:00:58	then distributed databases. an example of distributed database or distributed application is Google Docs.
+0:01:04	Google Docs an application in which a multiple people can collaborate and right to get a document
+0:01:11	 and the system will make sure that the document is consistent across all the nodes that are accessing to it.
+0:01:20	in this example we have three people are writing the three first words of the America Constitution, We the People,
+0:01:27	then you have Google Docs that will make sure that they all see the same thing, the same document.
+0:01:35	In that sent it's a distributed database, on top of which is built and distributed application, in this case the editing application.
+0:01:46	 Now, the main promise of blockchain is to be able to create distributed applications on a network that is completely open.
+0:01:57	 so anyone can create an application, and anyone can sell, provide us an access to the network.
+0:02:05	in that sense, it's a system in which the network itself is not controlled by a single actor, but anyone can participate.
+0:02:15	So the promise of blockchain in basically to break the existing systems in which a single actor is the one that manages all the nodes, on top of which are these distributed applications.
+0:02:33	Now internet uses a local cost model, which means that the internet service providers, the organizations that provide access to services that are internet,
+0:02:48	 they have local customers, they operate with local costs, they are paid for their services locally, and I all those exchanges are done in local currency. that's what we understand by “Local economic model”.
+0:03:05	And the problem of the local economic model is that it has limitations that are all well-known now,
+0:03:13	 which are for example cartels. because the customers can only access service providers that are within their economic region. Then these actors  can agree together to keep prices high for instance. so that's an example of the Cartel.
+0:03:32	other example of limitations of this network is the fact that again because the customers are captive from this access service providers, then they can destroy the competition
+0:03:45	 and they can ask application builders, companies that do the applications to pay for access to these customers. that's what's happening with the problems of net neutrality
+0:03:56	and marginally speaking, we know that this local economic model creates situations in which the solutions that are found are suboptimal.
+0:04:07	 so that's an example of these very simple case that we are here
+0:04:13	 in here we have two ISP, red ASP in the blue ISP, and there is a communication that wants to go from origin to destination.
+0:04:23	 the optimal way of routing that communication is to.. that Communications completely route through the red ISP.
+0:04:33	however because network operators tend to be selfish and try to minimize their cost, not the global cost of the system, in this case the red ISP is probably going to send that communication to the closest point outside of its Network,
+0:04:47	 and that's this blue intersection point. and as a result instead of taking the shortest path,
+0:04:55	which would have been the one that globally minimizes the bandwidth, it’s going to be taking a longer path, just because the red operator is selfish and want to minimize his cost.
+0:05:07	 so those are typical problems in algorithmic game theory is that the systems, or the subset of actors that at the same time for optimizing their own profit, not the profit  of, not optimize the whole system,
+0:05:25	Tend to end in suboptimal situations like this one.
+0:05:28	 and that waste is bandwidth for the whole system. using paths that are longer than what they could be means that everyone is going to suffer for my reduced capacity in the system. and so those are typical limitations of a local economic model, a problem of optimization of resources.
+0:05:51	Blockchains have decided to use a different model which is a global model.
+0:05:58	They continue using, having a local customers or customers were connected to the closest entry point to the blockchain, which is most of the time nearby entry point,
+0:06:10	The operation cost by the blockchain operators are still incurred in local currency. The operation costs are things like the hardware, bandwidth, things like that
+0:06:21	 but the payment of the services that are provided in blockchain is done at a global scale. so it's the same payment for for everyone and it's all done  in a Global Currency, in this case the currency of the system, for instance, Bitcoin.
+0:06:38	So in that sense it’s a global economic model, and the limitations of the global economic models are also being progressively understood.
+0:06:48	one limitation that is very visible in early blockchains like Bitcoin is the fact that because there is the costs are incurred locally, but the payment is global there was a difference in profitability and depending on the economic area
+0:07:40	blockchains have decided to operate according to a global economic model. they continue having local customers and their operation costs are incurred locally,
+0:07:53	 but the payment of the services are done at a global scale, with a global cost for the same for all operators and with a Global Currency, for instance Bitcoin.
+0.08.06	 so the limitations of the global economic model are starting to appear progressively. for instance the difference between.. there's a difference of profitability between the operators due to the fact that they incur local costs but they have Global Payments for the services,
+0.08.28	 and as a result some Geographic areas are more profitable than others, which will end in having a concentration of operators in the traffic areas that are more profitable.
+0.08.43	that's what we see with Bitcoin, where many Bitcoin miners are concentrating in China. Due to the higher profitability.
+0.08.55	 The second problem of this global economic models is that they have to create a separate currency in order to pay for all the services, and this separate currency creates risks of fluctuations,
+0.09.09	so Financial Risk for the system operators and they also create risks related to attacks spams speculation and older regulation that comes with that
+0.09.27	So the global model also has the limitations.
+0.09.31	one of the reasons why the blockchains have chosen to work with a global model is also a purely technical, because in order to operate the algorithm, the consensus algorithms  need to have an internal (inaudible).
+0.09.44	but we will see that little bit later. In any case those models also create technical challenges, which is that because the system is completely open then it's very easy for attackers to just join the system to just a create their own nodes,
+0.10.05	 Connect their  nodes to the rest of the system and they’re now within the system.
+ 0.10.11	So unlike other attacks, or the Financial systems where the Challenges are more to prevent intrusions, in this case that attacks are already inside.
+0.10.21	 so the problem is to prevent those nodes that are owned by attackers to disturb the computations of the database, and also to prevent users of the system, from stealing currency from that system.
+0.10.39	So, from the application side that is from the everyday’s programmer side point of view, the blockchain is just a web service. So you have your application written in whatever language you want, JavaScript, that connects to a node via HTTP,
+0.10.53	and calls functions, which here in this case are called smart contracts for the blockchain,  that reside in this node.
+0.11.01	From the application developer it looks just like a web service similar to any other web service that they might be currently using.
+0.11.12	From the developers' perspective the system is significantly more complex, and has different layers that need to be protected, separately protected to avoid attacks and hacks.
+0.11.30	 The typical example of a problematic case in a blockchain is when there are 2 applications that run to write in the same memory cell to different values.
+0.11.45	 this is the case also for centralized databases, is but what happens in centralized database is the Central database usually manages the different access to it via locks, and make sure that they're sequential.
+0.11.58	so if two applications want to write in a central database and they want to write on the Cell X, 1 value here in another value here,
+	the central database, only thing that is going to do is that it is going to make one transaction pass and once the transaction has ended and the second transaction is going to scheduled. In sequence.
+0.12.16	In this case the problem is that because the network has its geographical extension. This node for instance could be in California, and this node could be in Japan, in Tokyo.
+0.12.30	then there is a modification of the current database that is going to happen here, where as the simultaneous modification of the database is going to happen in this other point, and information will have to propagate through the network until the problem is identified, and after that the problem is some decision is taken,
+0.12.52	 And after, everyone is informed that it was decided to take one and reject the other one or the opposite.
+0.12.57	so the problem here is that because of this network, then the case in which I have two concurrent accesses to on cell is much more difficult to solve than in a central database.
+0.13.10	That is, in blockchain, the problem is typically called double spending. Because if these are Financial transactions this is basically one person that is using his bank account to pay one vendor,
+0.13.29	 and this is the same bank account that is used to being used to pay another vendor, and the idea is that if there is not enough money in the system to pay both vendors at the same time,
+0.13.40	Then one of the two transactions need to fail.
+0.13.42	otherwise you will have double spent, you have spent it twice the amount of money that you had in your bank account.
+0.13.48	so once this call is made, and the application that wants to that is connected to this node says that it wants to write on the cell X, the value of this function f computed on value 4.
+0.14.01	then at some point in time in the network there is the distributed layer that (distribute computation layer), that has to compute the value of f of 4 and f of 3.
+0.14.11	Once these things are computed then at some point there needs to be a consensus algorithm, so the distributed database layer that is going to decide which one is going to be really written in the database if it's going to be x=3 or x=4.
+0.14.24	and after that the other layers are the virtual machine, which is the piece code that is in charge of performing all those computations, in particular performing the computations of f.
+0.14.38	And after that you have on top of that, the languages, in which you are going to express the business logic of f, (inaudible) to virtual machine.
+0.14.45	So all these layers of the different layers of the system seen from the system developer side
+0.14.53	Now the P2P layer is difficult to get right because also is one of the layers that is the most attacked in the system.
+0.15.05	so it receives many attacks of the attempts of impersonation, message deletion, of fake messages, and denial denial Services, Spams or something like that.
+0.15.18	 So it's very easy for attackers to just a add their own node to the system and start sending invalid transactions or invalid states onto other nodes
+0.15.30	That's protecting against this type of attacks is very important.  it's also very important that the p2p layer is properly optimized, because it is going to have a large resource requirements. a lot of messages are going to be sent through the p2p layer, and also those type of codes are known for being difficult to get right.
+0.15.53	In Tezos we had a bug due to a mistake. Mistake was a string that looked as if it was empty but contained a \0 inside. Those are the typical bugs that attackers are going to identify and going to try to exploit in order to take your system down
+0.16.12	 and potentially try to disturb the computation of the system or steal some kind of value out of it.
+0.16.23	So the challenge in the p2p layer is to be able to generate all that code in an optimized way, and from a specification in such a way that the code is directly correct.
+0.16.35	that’s what we would ideally want to do. so optimize code that consumes as little of bandwidth as possible or resources possible, directly from specification in such a way that we can change the specification whenever we need,
+0.16.52	And it generates the rest of the code and prove it correct because we don’t want to have these types of errors in the system.
+0.17.00	Now the distributed computation layers. so the idea here is that in this distributed database, instead of having the applications outside of the database perform the computations, the applications are going to connect to a node, and are going to tell the node what computations they want done.
+0.17.20	 and according to the motto after that, this computation is going to prepare for a subset of nodes of the network, and after that the result is going to be broadcasted to all the other nodes.
+0.17.31	The idea of having the computation done by a subset of the nodes instead of having it done by an external application that cost from the outside is to increase the reliability of the system.
+0.17.52	if a random subset of nodes is selected to do the computation then it's very unlikely that random subset is going to be the subset of nodes that is owned by an attacker, and therefore it's going to be harder to tamper with that computation.
+0.18.08	 so there are different models. The most robust model is that every single node in the network is going to do a copy to do a computation of the function that needs to be computed.
+0.18.22	 That's very resource intensive, so most of the time a random subset of node is selected every time that a computation is to be done.
+0.18.33	With the idea that the attacker not being able to predict this Randomness, it's going to be very unlikely that you own all this subset of nodes that are selected for the computation, ok so it's a probabilistic defense against potential attackers
+0.18.54	(inaudible) you could own the computation that is on the entry point. Most of the time entry point is owned by the attacker so basically that would mean just having a pure database in which the computations are done outside and not inside of the system
+0.19.08	Most blockchains use this model. Subset of Random nodes are generated and that's what the computation of all the contracts the functions happens and it's also the case for Tezos.
+0.19.24	 the challenges of the distributed computation layer are to understand the consequences of each algorithm. The subset of nodes that are chosen randomly can be larger, can be smaller, can be of different properties, and all those choices are going to impact the global properties of the network like the lightness the latency and all those kind of things.
+0.19.49	So all those parameters need to be carefully tuned in such a way that globally the network performs in the best weight while keeping the highest possible level of security.
+0.20.0	The other problem is that all these algorithms are pretty new, and we don't know what are the properties. and we would like to have more proofs ,more formal proofs,  about how they impact the global system.
+0.20.19	the first challenge is that these algorithms are already sitting on a different layers that are below, in particular the p2p layer, and in order to experiment with the computation layer and change things very easily it would be much easier if the p2p layer that was below was are generated from a specification,
+0.20.41	in such a way that every time we change the algorithm in the distributed computation layer, then we can generate the rest of the p2p layer, we don't need to manually rewrite the p2p layer. So would be very useful to have a code generation from the high-levels to the lower levels.
+0.21.02	okay that was for the distributed computation layer. the next layer is the distributed database layer.`
+0.21.11	 so what happens here is that in the system, there are two potential states at the same time. so here in this example, there is part of the network that thinks that the current state is the red State, s3, and part of the network that thinks that the current state of the database state is s4.
+0.21.37	 These states are going to propagate, and at some point in time there's one piece of the network, one part of the network, that is going to  note this, that there are two candidates for being the main state of the database, and this Frontier, between the blue and red will have to decide which state to adopt and then that will move the frontier
+0.22.02	until the system becomes all blue or all red. So basically what happens here we have a typical algorithm is that this node here decides for instance has to be blue becomes blue, informs the other nodes that now these 2 nodes are blue, and these two now have to decide to decide to move to be blue as well and then the whole network is blue. that's how consensus algorithm typically works
+0.22.27	they're bad news about consensus algorithms. The first bad news is that impossibility theorem from 1985 that says that you cannot have a consensus algorithm that at the same time terminates in which everyone agrees on the same value and the value makes sense
+0.22.47	. so because of this impossibility theorem, we already know that the consensus algorithm will have to abandon one of these properties, and the only property that is reasonable to abandon is a termination.
+0.23.00	so that means that actually all these consensus algorithms are actually semi-algorithms, and they may not terminate. They may terminate in some cases but they're going to be cases in which they do not terminate.
+0.23.11	and because they do not terminate, then we have at the same time in the network multiple current states of the database. So within a network this database has multiple concurrent multiple current states that are potential candidates for being the state of the database,
+0.23.31	 and the nodes that have decided that they're using this state or another state, the state of the node is going to change with time.
+0.23.41	So in this example here, is the same examples before, we see that these nodes 1, 5 and 4 are considered that the current state of the database is the blue State,
+0.23.54	 while States a node 2 and 3 consider that the current state of the database is the red State.
+0.24.00	at some point in time the nodes that are on the frontier, they will learn that there is also a blue State on top of the red State, and they're going to decide to swap or not. So in this example, node number 2 decided to swap to Blue and after that node number 3 decided to swap to blue as well, and then the whole system became blue.
+0.24.23	 there is another way of showing this. this is the representation most of the time is used. this represents are of representation branches. so up to this point the system had only one current state, and at this point in time part of the nodes moved or decided to follow the blue state that are part of nodes that decided to follow the red State, and this branch had 2 nodes at the beginning,
+0.24.48	and after that one node swapped, and then with only one node, one node swapped and it disappeared.
+0.24.55	 okay so this diagram shows how in the system there are states that there's convergence on a single state and after multiple states appear and the Dynamics of how some nodes move to the other Branch until one of the branches disappear we have consistency again convergent in the blue State and after they're going to be new states appear et cetera.
+0.25.25	So this diagram here is the result of algorithms not terminating. okay this is the result of the theorem the impossibility theorem that says that consensus our algorithms may not terminate, and  at any point in time there may be multiple current states in the database
+0.25.45	now that we understand how there are these multiple states in the database at any point in time, we want to add another property which is Fault tolerance. We would like this database to be fault tolerant, and they're typically 2 types of tolerances that are interesting,
+0.26.08	which is Crash tolerance, tolerance to the fact that some nodes are going to crash and Hack tolerance, the rest of the fact that some nodes are going to be hacked by a malicious actors, and these actors will try to perturb, Disturb the system by sending Fake Messages, trying to impersonate people et cetera
+0.26.30	so the hack tolerance is called Byzantine failures. They are basically packs. and the main idea here is that in order to be a full torrent, all the algorithms what they end up doing is that they end up doing a vote among the nodes,
+0.26.51	 and deciding via some form of a majority rule which is the current state.
+0.26.58	 so basically if we go to the previous example here okay all the algorithms that are full tolerant will have to use some kind of majority rule to say “oh there are more Blues than reds so we're going to try to move to the blue side “ that’s the way all these algorithms and achieving fault tolerance
+0.27.21	 and informally that works because by hypothesis will only have a minority of nodes that are hacked. and if you have some kind of election mechanism or majority based decision process that because you only have a minority of nodes that have been hacked then you should be able to achieve a decision that is the one that would have been wanted by the nodes that are not being hacked
+0.27.50	 That is the idea Behind having this majority rule based algorithms. most of the time when we say majority we don't mean 50% because of technical reasons the requirements tend to be around 1/3. you have a limit in most algorithms that says that you have at most 1/3 of nodes that can be malicious,
+0.28.16	 and algorithm will still work, if you have more than 1/3 then there is no guarantee that the algorithm works. but in that case all this algorithms work with some kind of voting mechanism and some kind of majority rule. This is very informal. And to formalize al that we will have to go into the details of the algorithms which would be a little bit too detailed for this presentation
+0.28.39	In closed networks those things will work very well. so close algorithms, consensus algorithms in closed networks have been known for a while already.
+0.28.53	  the most popular is Paxos it was designed by Leslie Lamport in 90’s,  and it has a lot of variants, for all type of cases that might appear.
+0.29.04	 it's proven correct, so it was formerly proven correct with this tool among other tools but Leslie Lamport actually created this tool named TLA plus
+0.29.16	 Which is a specification language and at the same time a model checker, in order to be able to prove the properties of concurrent algorithms
+0.29.24	The reason why that's needed is because concurrent algorithms are notorious for being very complex and full of bugs.
+0.29.34	 so after having created paxos, Lamport thought that it would be good to have a system that allows to prove the property of the algorithm, and that's why he worked on TLA plus.
+0.29.48	These are typical variances of paxos algorithm. you have a Byzantine failures, you have sequences, multi paxoses for sequence of values, you have different compromises for number of rounds that you request to converge vs. pool quorum and things like that,
+0.30.04	and he has simplified versions like the Raft, in any case there are a lot of variants of paxos, and paxos is by far the most used algorithm in the industry for closed. networks.
+0.30.16	Closed networks are things like a Google, Amazon, a networks in which one operator owns all the nodes and the number of nodes is known. There a limited number of nodes
+0.30.30	This still can get hacked, but they’re limited.
+0.30.35	In open networks, in open networks it was thought for a long time that consensus algorithms were impossible, due to what is called the sybil attack.
+0.30.48	the sybil attack is the fact that we just said before that the way these algorithms work is by voting in by a majority rule. when you're in a closed Network, the votes there are certain number of nodes that can be attacked at most 1/3,
+0.31.06	okay but at the end of the vote is going to solve that problem and just going to be a majority of non hacked nodes that are going to finally decide.
+0.31.16	the problem with open networks is that the attacker can create as many node it as he wants, and the result is that he can very easily then change the result of a vote because he can create millions and millions of nodes and have them all vote in the sense that he wants
+0.31.36	so the problem with open networks is that the way closed networks work is incompatible with the openness of the network. (?) is difficult to have a vote and a majority rule in an open network when attacker can create as many nodes as it wants. So that's the sybil attack.
+0.31.52	 Because of this, it was thought that consensus in open networks was impossible until Nakamoto in 2008 introduced Bitcoin. The idea of Nakamoto is to solve the problem in a completely different way is to use economic incentives to solve the problem
+0.32.15	 so the way he does that is that he says, in this network what we're going to do is that we're going to force people to pay to participate and we're going to reward them for reaching consensus
+0.32.29	. so for people that participate and reach consensus this should be cost-neutral, because they pay and they get paid after that for people that participate but are not interested in reaching consensus than it would create important costs for them.
+0.32.47	 so that's where this decentivizes not reaching consensus and if you're an attacker and you want to create millions of nodes then immediately you have to pay millions of time.
+0.33.30	So the idea here is not that is going to prevent the system from being attacked. It is that it's going to make the attack so expensive that it doesn't make sense given the amount of money that there is to steal in the system.
+0.33.14	 so that's the idea of Nakamoto. And this idea, he transformed into an algorithm. His original algorithm is proof of work. In proof of work basically the clue is to solve a puzzle cryptographic puzzle. it's reversing a hash function.
+0.33.33	And  in order to participate, you need to own  a very powerful hardware to solve this cryptographic puzzle
+0.33.43	the subset of random nodes that is chosen to do the computation. so the way these random nodes are chosen to do the computtation is that the first one that sold the cryptographic puzzle is basically the node that is going to do the computation.
+0.34.00	so that introduces here, a randomness that cannot be predicted
+0.34.05	 and that's how the pay to participate part of the algorithm works, and once the node  that is going to build the block is defined then it will create a block and it would add the fee for itself inside
+0.34.23	This is a very important part which is the fact that the fee is added into the block that was just created. That is what incentivizes the consensus.
+0.34.36	and we'll see it going back to previous image. it's this one. each one of the miners that created each one of these blocks added the reward for the work into the block
+0.34.52	and because they added the reward for the work into the block when there is one branch that disappears all the rewards that these miners had added into the blocks disappear as well,
+0.35.05	 so if this branch, or these miners disappears, then all the money that they would have been paid back is gone, and because of that they have an incentive on working on the branch that is the most likely to remain.
+0.35.21	so we're saying that in order NOT to lose money, okay, the miners have an incentive into finding which branch is the most likely, and then immediately uses this branch instead of using any other one.
+0.35.37	if they mine, if they create blocks on a branch that is not the most likely they're taking the risk of not getting the money back.
+0.35.48	"and this is what holds the whole algorithm. it's that it doesn't matter who wrote the code that the miner is running. it doesn't matter who is the miner, it doesn't matter how they do this block generation et cetera.
+          "
+0.36.03	 in all cases the minor has his interest in joining the majority Branch to consensus in such a way that he gets his money back
+0.36.19	so this is the proof of work algorithm
+0.36.26	 tezos doesn't use these algorithm. it uses an algorithm that consumes less energy, less electricity, which is proof of stake. One variant of proof of stake tezos uses is liquid proof of stake variant.
+0.36.40	 in here we present a more generic algorithm. so in proof of stake the ideas are the same, the implementation is slightly different. pay to participate and be rewarded for reaching consensus, the main ideas of Nakamoto remains.
+0.36.55	instead of buying hardware in Tezos you need to own tokens to participate. so that's the pay to participate part.
+0.37.04	The builders of the blocks are chosen randomly and once it's your turn to build a block you have to leave a bond as a ransom until the networks is convinced that you didn't do anything wrong, and after that this bond will be unfrozen in given back to you.
+0.37.22	 okay so that's the way that you pay to participate because you need to own tokens, and in some sense there is some money that is kept aside for your participation to make sure that., you can lose money if the you didn't participate properly.
+0.37.47	The reward for reaching consensus is every time you create a block is, you add a fee into the block exactly the same way as proof of work.
+0.37.58	and here after sometime then your bond will be unfrozen.
+0.38.04	to pay to participate: be rewarded for reaching consensus. there are of differences with respect to proof of work, because it is very easy to create new blocks. it's not resource consuming, then we have to be a little bit careful on the fact that people don't generate blocks in multiple branches.
+0.38.29	the whole previous algorithm works because you have to choose the right branch. you have to choose the more likely branch. If we go back here.. In proof of work, you have to choose on which branch you are going through at your block
+0.38.45	 you cannot do it in both (blocks) because it's too expensive. In proof of stake you also have to choose carefully in which branch you are going to add your blocks. you have to choose the most likely, and you cannot do it in both because otherwise you will lose the money that was there in the bond.
+0.39.03	that's why there is this double baking and this bonding mechanism here. In any case, besides from those small details and the fact that it consumes less electricity, this algorithms are the implementations of the same main idea. the main idea is pay-to-participate, be rewarded for reaching consensus.
+0.39.25	"and that's the economic workaround against the sybil attack, the type of attack that prevents the more classical algorithms to be used in open networks.
+          "
+0.39.40	Now the Nakamoto conjecture is the fact that no other algorithm has been found  til now. All the algorithms that do consensus in open networks they have this economic incentive behind, and they need to have a currency in order for them to work.
+0.40.03	so the idea is that we haven't found any algorithm that doesn't have an internal currency. Which also means that the reason why blockchains have their own currency is because it's required by the algorithm itself. it's a technical necessity.
+0.40.26	That's a bad news. That's a very bad news because basically what we wanted was an open database with a consensus algorithm inside and we ended having a currency. And currencies bring a lot of trouble with them. They mean that now there's going to be money inside of the system, which means that you need to have financial system grade security.
+0.40.50	It means that you also need to interoperate with other financial systems. S that means basically that your database, instead of being a database just for simple applications and Google docs and things like that,
+0.41.03	Immediately moves to the next level in complexity, which is, now it's a financial database with all the financial requirements.
+0.41.13	Distributed database's challenges. The first challenge is to better understand distributed consensus algorithms. It's probably the first time that we have algorithms that use economic incentives in order to work.
+0.41.30	We already knew for a while that economy and algorithms were related, but it's really the first time that we have the only algorithm that we know in order to solve this problem, it is completely economic based.
+0.41.47	So this is a completely new type of algorithms, and because of that we need to better understand them. We need to stimulate them, we need to attack them we need to design better algorithms.
+0.42.00	The second thing that is important is that we would like to have better proofs around the properties of these algorithms. The first thing we would like to have is a prove or disprove Nakamoto conjecture.
+0.42.12	Know if "Yes this is the only way of solving this consensus algorithm in open networks", or "No there is an algorithm that does not use a coin"
+0.42.23	And that will be very useful to have elements of answer in one or the other way, other than the fact that now we have never found any of algorithms
+0.42.35	We would also like to have more proofs of the properties of this consensus algorithm. So by itself that would be very useful.
+0.42.44	The last thing is, again, all these algorithms, because there is a tower of layers, different layers, that depend on one or the other, every time you modify this algorithm then you have to propagate the modification all the layers that are below,
+0.42.59	"and it would be very useful to be able to generate the code automatically from a specificatio,n in such a way that when we modify this layer, then immediately the order layers that are below can be generated automatically from a modified specification without having to rewrite all the code.
+          "
+0.43.16	Next layer: virtual machines. So the virtua machines today are the main attack vector of blockchains. Blockchains as of today hasn't failed because of their algorithms that are inside, or because a malicious attackers have added nodes and have been able to distort the current state of the database.
+0.43.46	Till now they have all failed because of the code that is added to the database. So what is called a smart contract, the code in the smart contracts have bugs, and that's what the hackers use in order to steal funds or to destroy information that is inside.
+0.44.04	So until now it's this layer that has created the most problems.
+0.44.10	"Probably one of the reasons is that the early blockchains didn't design a virtual machine with security in mind. They were more interested in portability, standardization, probably speed, and also simplicity of implementation.
+         "
+0.44.31	So the different virtual machines are here, we have the evm with some of its technical characteristics, WebAseembly and Michelson.
+0.44.43	What is a very obvious in this comparison is that a Michelson was designed in order to avoid all the problems that, in order to make the programming of non-buggy programs simpler. And that's that's the purpose of Michelson.
+0.45.07	For instance Michelson has a infinite precision ints, so the person that is programming on Michelson doesn't need to worry about overflows or things like that, because it's already given out of the box by Michelson. Same thing for the data structures, etc.
+0.45.25	Michelson was designed to make the life of the programmer of smart contracts easier, and to help him write code that is not vulnerable to attacks.
+0.45.35	So here are examples attacks that have happened in Ethereum. This is from a website, ethereum wiki, an external website, and it has a list of major issues that have resulted in losses of funds.
+0.45.55	Now, these are the typical, the most common bugs in smart contracts. Things like overflows. Things like reentrant bugs, that was the DAO, the fact that when one function calls another function and then comes back, and then you have to be careful that attack us cannot introduce in the middle other functions just before the the calling function returns.
+0.46.16	and they're also a lot of a combination of poorly thought features. That's probably one of the most difficult bugs. It's the fact that this virtual machines were written without thinking about all the possible combinations, all the possible ways that could be used,
+0.46.33	and very often there are a couple of things that together don't work well. Individually they were good ideas and good features but together they create a very complicated systems that are very hard to get right, and
+0.46.52	that are easy to hack and then the funds are lost in there.
+0.46.58	Tezos virtual machine was designed to make the programming of smart contracts as easy as possible. In the sense that it should be easy to write a program that doesn't have bugs. That's the idea.
+0.47.15	We use formal verification techniques to approve the property of those programs and among other things, to proove that they don't have bugs.
+0.47.23	There are many challenges in virtual machines. The main challenge is that because blockchains are open databases than anyone can put a piece of code on the database,
+0.47.38	which means that users of this pieces of code are using pieces of code written by 3rd party most of the time. They don't know they have no guarantee of what these pieces of code could do.
+0.47.52	So here the problem is to help the users understand the properties of this 3rd party pieces of code. Users are going to see one piece of code that is on the blockchain and we need to have him to understand this piece of code is safe before using it.
+0.48.08	So the way this thing is done, for the most of the time, it's using formal verification techniques. Things like a model checking, abstract interpretation,  embedding into therorem provers like F*, or coq, etc.
+0.48.22	Another way of doing that for simpler programs is to recognize patterns, to allow creation of search engines as well.
+0.48.34	"Okay so these are the challenges of the virtual machine. Next there are languages. So the languages is the part that is the most visible to the programmer, the programmers are able to write the contracts in this languages and after that these are compiled to the virtual machine.
+                 "
+0.48.54	Here what happens is that not everyone has the same understanding of what a blockchain should be, and a blockchain should do. A lot of blockchain organizations still think that a blockchain should be a platform for decentralized apps like Google Docs. Any type of apps.
+0.49.18	In Tezos most people that work in Tezos are a little bit more pragmatic because of the limitations of the blockchain. The limitations in terms of performance, security, and all those kind of things.
+0.49.33	Many people in Tezos think that we should do things more step by step, and first make sure that we're able to automate simple legal contracts that talk about transactions. Financial transactions.
+0.49.50	So instead of having an application like Google Docs, we should try to do much simpler applications, like automating simple transfers of money.
+0.50.04	Having simple escrows. Having simple payment systems between software companies and freelancers, things like that. Once all this part is done properly, and we have a system that is not hacked, is secure enough, has been working for a while, then after that we can start looking at other applications and a little bit more generic, less about financial transactions.
+0.50.33	In any case, there are different views of what a contract should be, what type of applications should be run on the blockchain. And because of these different views, they're going to be different views of what is the proper language to implement its applications.
+0.50.52	In Tezos, we consider that these applications should be simple legal contracts, written in domain specific languages, in such a way that we have a better control on the properties of these programs,
+0.51.03	and we can prove their properties, which gives us a system that is globally more  secure, and that the contracts themselves should be written by specialized developers.
+0.51.14	People in Tezos think that there should be the web developers that do all the JavaScript part, or whatever is your frontend technology, there should be more specialized developers that do the contracts, companies that know how to manage formal verification tools and those kind of things,
+0.51.33	and let the very specialized people that do the core itself.
+0.51.38	Other organizations think that the contracts, the applications that run on top of the blockchain, should be universal, should be generic, and they should be written in generic languages like JavaScript or Python, and that any developer should be able to write these applications, these contracts.
+0.51.58	That's the difference of positioning between different organizations and because of that there is going to be different consequences on the way this languages are designed, the virtual machines are designed, etc.
+0.52.13	In Tezos we advise that everything that can be computed off-chain should be computed off-chain. So that's because blockchains are per essence slow.
+0.52.28	We can always improve the speed of blockchain, but they're never going to be as fast as a computer executing operation sequentially in a single machine. so because blockchains are by essence slow, we need to be careful on the way with program on blockchains.
+0.52.47	Here is a typical example of something that is very simple, but there's a right way of doing it, and a wrong way of doing it. So this is an application and this application - the only thing it does is that caused the contract with the value 9,
+0.53.03	and the contract, the only thing it does is that it computes the square root of 9, which is three. So basically this calls f(9) and this thing returns, the f returns 3.
+0.53.15	Now this very simple program is the wrong way of doing things. It's the wrong way of doing things because here you're asking the blockchain to compute a complex operation which is a square root.
+0.53.42	Blockchains are very slow. and because of that says recommends that everything that can be computed outside of the blockchain should be computed outside of blockchain.
+0.53.53	Here is a very simple example of the right way to do things, and wrong way to do things. So in this example we have an application that calls a contract and this contract computes a square root of a number.
+0.54.09	The application calls f, the f is the contract, with the value 9 and the contract just computed the square root. Now this very simple program is actually the wrong way of doing things.
+0.54.22	Why? because we're asking the blockchain, which is a very slow system, to compute a square root, when we could do something much simpler.
+0.54.31	So the right way of doing this is to actually compute square root outside of the blockchain and ask the blockchain to double-check that the square root is computed property.
+0.54.42	So that would mean that here, the application, it would call the contract on the blockchain with 9 and a square root of 9 which is 3, and the only thing that the blockchain does is that it checks that 3*3 equals 9, and then uses the value of 3.
+0.54.58	The difference is that in one case, you're computing square roots in the blockchain, with the virtual macihne of the blockchain, which is extremely slow. In the other case you're just computing multiplication and checking that the values are equal.
+0.55.12	So this is the right way of doing a contract, pushing everything that can be pushed outside of the blockchain outside ,and just do the minimal verifications into blockchain, and this is the wrong way of doing a contract which is to make the blockchain compute things that could be computed elsewhere.
+0.55.32	So Tezos encourages pushing outside of the blockchain as many computations as you can.
+0.55.45	Again in the languages how the language ecosystem works, how the language stack works. Here you have different languages, these are different languages that compile to Michelson.
+0.56.02	 and all those are prototype languages, and the compilers are not finished, but in this case there is mini OCaml, mini Haskell, mini JavaScript and mini Python. And they compile to Michelson.
+0.56.13	For the moment there are 4 separate compilers. In the future they are going to be DSLs as well. The global problem here is that all this compilation needs to first understand the cost model of blockchain.
+0.56.27	The fact that for blockchain you have to pay for the memory, you have to pay for a instructions, and the fact that you should push all the computations that you can outside of the blockchain.
+0.56.36	It should also incorporate all these formal verification techniques; model checking, abstract interpretation, theorem provers,
+0.56.45	 and ideally all these compilers should be certified in such a way that the program that is written in the upper language is proven equivalent to the program that is executed by Michelson.
+0.56.59	So here is one compilation system works inside of the blockchain, in Tezos.
+0.57.08	The challenges. so the challenges of this language layer or to make sure that the programs that are in the blockchain correspond to what users expect.
+0.57.19	remember that users will use programs that are already in the blockchain that were put there by other people, by 3rd parties. and it's very important for them to be able to be convinced to be sure that those programs are not malicious
+0.57.38	so this is probably the most important challenge in the language layer. Making sure that the users understand the semantics, the meaning of the contracts that they're using. Whether they were really written by them or written by other people
+0.57.59	The second challenge is to be able to, on those contracts, prove contract-specific properties. Third challenge is to to certify the a compilation system end-to-end. After that to design DSL (domain specific language) for specific type of contracts that are going to make the design of this type of contracts easier.
+0.58.20	So DSLs could be things like a specific languages for financial contracts, a specific language for contracts between simple contracts. All types of specific languages.
+0.58.38	And another challenge is to design programming environments that help developers program for the blockchain, and understand the cost model the blockchain.
+0.58.48	The blockchain is an environment in which programming is a little bit different than what most developers are used to or cost for the operations there is a cost for memory usage and was this complex pain between what to put in the blocks in and want to put outside of the blockchain so if we can have environments that help programmers do a better job at programming their contracts that would be very useful"
